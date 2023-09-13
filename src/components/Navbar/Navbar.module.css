@@ -21,6 +21,7 @@
 
 .nav_item{
     padding: 0 18px;
+    text-decoration: none;
 }
 
 .search_bar{
