@@ -1,0 +1,80 @@
+.logo{
+    padding: 0;
+    margin: 0 5px;
+}
+.navbar{
+    margin: 0 auto;
+    display: flex;
+    justify-items: end;
+    align-items: center;
+    background-color: black;
+    color: white;
+    max-width: 1887px;
+}
+
+.nav_list{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0 2px;
+}
+
+.nav_item{
+    padding: 0 18px;
+}
+
+.search_bar{
+    display: flex;
+    flex-direction: unset;
+    justify-content: center;
+    color: white;
+}
+
+.search_bar input{
+    border: none;
+    width: 400px;
+}
+
+.search_button{
+    border: none;
+}
+
+.user_actions{
+    justify-content: space-between;
+}
+
+.Lang_btn{
+    color: white;
+    margin: 0 20px;
+    border-radius: 50%;
+}
+
+.plan_btn{
+    background-color: violet;
+    color: white;
+    margin: 0 20px;
+    padding: 0 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 130px;
+    height: 40px;
+}
+
+.login_btn{
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 0 20px;
+    border: 1px solid white;
+    width: 80px;
+    height: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.last_btn{
+    color: white;
+    margin: 0 20px;
+    border: none;
+    font-size: 25px;
+    padding: 20px;
+}
