@@ -10,7 +10,7 @@ const Home = () => {
     // Fetch popular shows
     fetch("https://academics.newtonschool.co/api/v1/ott/show?page=1&limit=5", {
       headers: {
-        projectId: "Your projectId",
+        projectId: "f104bi07c490",
       },
     })
       .then((response) => {
@@ -33,7 +33,7 @@ const Home = () => {
     // Fetch trending content
     fetch("https://academics.newtonschool.co/api/v1/ott/show?page=1&limit=5", {
       headers: {
-        projectId: "Your projectId",
+        projectId: "f104bi07c490",
       },
     })
       .then((response) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-const RegistrationForm = () => {
+const Login = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -32,7 +32,7 @@ const RegistrationForm = () => {
         <label htmlFor="name">Name</label>
         <input
           type="text"
-          id="name"
+          className="name"
           name="name"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -46,7 +46,7 @@ const RegistrationForm = () => {
         <label htmlFor="email">Email</label>
         <input
           type="text"
-          id="email"
+          className="email"
           name="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -60,7 +60,7 @@ const RegistrationForm = () => {
         <label htmlFor="password">Password</label>
         <input
           type="password"
-          id="password"
+          className="password"
           name="password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -70,9 +70,9 @@ const RegistrationForm = () => {
           <div>{formik.errors.password}</div>
         ) : null}
       </div>
-      <button type="submit">Register</button>
+      <button type="submit">Login</button>
     </form>
   );
 };
 
-export default RegistrationForm;
+export default Login;

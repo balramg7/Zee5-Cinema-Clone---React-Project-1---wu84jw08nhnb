@@ -8,13 +8,12 @@ const App = () => {
 
   return (
     <div id="main">
-      <BrowserRouter>
+      
+      {/* <Navbar />
       <Routes>
-        <Route path='/' element={<Navbar />}>
-          <Route index element={<Home />}/>
-        </Route>
-      </Routes>
-      </BrowserRouter>
+        <Route path='/index' element={<Home />}/>
+      </Routes> */}
+      <Home />
     </div>
   )
 }
