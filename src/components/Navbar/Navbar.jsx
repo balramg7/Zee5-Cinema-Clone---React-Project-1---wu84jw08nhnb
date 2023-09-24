@@ -4,8 +4,6 @@ import { FiSearch } from "react-icons/fi";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { IoReorderThree } from "react-icons/io5";
 import {TbGridDots} from 'react-icons/tb';
-import { Link } from "react-router-dom";
-import Login from "../Registration/Login.jsx";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
@@ -21,7 +19,7 @@ const Navbar = () => {
         />
       </div>
       <ul className={styles.nav_list}>
-        <li className={styles.nav_item}><Link to='/home' style={{textDecoration: 'none', color:'white'}}>Home</Link></li>
+        <li className={styles.nav_item}>Home</li>
         <li className={styles.nav_item}>TV Shows</li>
         <li className={styles.nav_item}>Movies</li>
         <li className={styles.nav_item}>Premium</li>
@@ -37,7 +35,7 @@ const Navbar = () => {
           <HiOutlineLanguage />
         </button>
         <button className={styles.plan_btn}>Buy Plan</button>
-        <button className={styles.login_btn}><Link to='/login' style={{textDecoration:'none'}}>Login</Link></button>
+        <button className={styles.login_btn}>Login</button>
         <button className={styles.last_btn}>
           <IoReorderThree />
         </button>
