@@ -1,3 +1,4 @@
+@import"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap";
 .logo{
     padding: 0;
     margin: 0 5px;
@@ -51,7 +52,7 @@
 }
 
 .plan_btn{
-    background-color: violet;
+    background-color: #8230c6;
     color: white;
     margin: 0 20px;
     padding: 0 5px;

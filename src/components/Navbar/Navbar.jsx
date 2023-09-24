@@ -34,8 +34,8 @@ const Navbar = () => {
         <button className={styles.Lang_btn}>
           <HiOutlineLanguage />
         </button>
-        <button className={styles.plan_btn}>Buy Plan</button>
         <button className={styles.login_btn}>Login</button>
+        <button className={styles.plan_btn}>Buy Plan</button>
         <button className={styles.last_btn}>
           <IoReorderThree />
         </button>

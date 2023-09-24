@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import styles from './CarouselCard.module.css';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import PopularCard from "../popularSliders/PopularCard.jsx";
+// import PopularCard from "../popularSliders/PopularCard.jsx";
 import TrendingNow from "../trendingSlider/TrendingNow.jsx";
 
 const CarouselCard = () => {
@@ -17,9 +18,9 @@ const CarouselCard = () => {
   }, []);
 
   return (
-    <div className="home-page">
+    <div className={styles.home_page}>
       {/* Hero Section with Carousel */}
-      <div className="hero-section">
+      <div className={styles.hero_section}>
         <Carousel
           showArrows={true}
           infiniteLoop={true}
@@ -38,7 +39,7 @@ const CarouselCard = () => {
       </div>
       <TrendingNow />
       {/* Popular Shows and Movies Section */}
-      <PopularCard />
+      {/* <PopularCard /> */}
     </div>
   );
 };

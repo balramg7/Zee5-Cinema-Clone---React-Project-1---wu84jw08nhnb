@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import styles from "./TrendingNow.module.css";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Card from "@mui/material/Card";
 
 const TrendingNow = () => {
   const [trendingData, setTrendingData] = useState([]);
-  
 
   useEffect(() => {
     const apiUrlTrending =
@@ -13,16 +16,34 @@ const TrendingNow = () => {
       .then((data) => setTrendingData(data.data));
   }, []);
 
-  // console.log(trendingData);
   return (
-    <div className="trending-section">
-      <h2>Trending New</h2>
-      <ul>
-        {/* Map through trendingData and display list items */}
-        {trendingData.map((item) => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
+    <div className={styles.trending_section}>
+      <Carousel
+        
+      >
+        <h2>Trending New</h2>
+
+        <ul>
+          {/* Map through trendingData and display list items */}
+          {trendingData.map((item) => (
+            <Card
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "20px",
+                margin: "10px",
+                height:"650px",
+                width: "150%"
+              }}
+            >
+              <div key={item.id}>
+                <img src={item.thumbnail} alt={item.title} />
+                <li key={item.id}>{item.title}</li>
+              </div>
+            </Card>
+          ))}
+        </ul>
+      </Carousel>
     </div>
   );
 };

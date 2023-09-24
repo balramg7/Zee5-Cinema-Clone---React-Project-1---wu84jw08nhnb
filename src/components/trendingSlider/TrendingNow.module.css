@@ -1,0 +1,9 @@
+.trending_section ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.trending_section img{
+    height: 600px;
+    width: 1000px;
+} 

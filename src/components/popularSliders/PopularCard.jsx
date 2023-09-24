@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState} from 'react';
+import styles from './PopularCard.module.css';
 
 const PopularCard = () => {
     const [popularData, setPopularData] = useState([]);
@@ -13,12 +14,15 @@ const PopularCard = () => {
       .then((data) => setPopularData(data.data));
     }, [])
   return (
-    <div className="popular-section">
+    <div className={styles.popular_section}>
         <h2>Popular Shows & Movies</h2>
         <ul>
           {/* Map through popularData and display list items */}
           {popularData.map((item) => (
+            <div key={item.id}>
+              <img src={item.thumbnail} alt={item.title}/>
             <li key={item.id}>{item.title}</li>
+            </div>
           ))}
         </ul>
       </div>

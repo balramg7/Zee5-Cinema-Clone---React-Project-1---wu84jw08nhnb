@@ -1,8 +1,13 @@
-*{
-    margin: 5px auto;
-    background-color: black;
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap";
+
+* {
+  margin: 5px auto;
+  background-color: black;
+  font-family: slick;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.home-page{
-    color: white;
+.home-page {
+  color: white;
 }

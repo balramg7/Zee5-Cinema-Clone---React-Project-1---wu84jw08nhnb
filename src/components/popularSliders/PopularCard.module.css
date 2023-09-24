@@ -1,0 +1,4 @@
+.popular_section ul{
+    display: flex;
+    flex-direction: row;
+}
