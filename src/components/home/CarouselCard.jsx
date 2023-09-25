@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from './CarouselCard.module.css';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import PopularCard from "../popularSliders/PopularCard.jsx";
+import PopularCard from "../popularSliders/PopularCard.jsx";
 import TrendingNow from "../trendingSlider/TrendingNow.jsx";
 
 const CarouselCard = () => {
@@ -25,7 +25,7 @@ const CarouselCard = () => {
           showArrows={true}
           infiniteLoop={true}
           autoPlay={true}
-          interval={5000}
+          interval={2000}
           showThumbs={false}
         >
           {/* Map through carouselData and display carousel items */}
@@ -39,7 +39,7 @@ const CarouselCard = () => {
       </div>
       <TrendingNow />
       {/* Popular Shows and Movies Section */}
-      {/* <PopularCard /> */}
+      <PopularCard />
     </div>
   );
 };

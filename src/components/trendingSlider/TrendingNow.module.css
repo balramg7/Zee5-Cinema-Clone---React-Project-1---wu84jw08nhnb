@@ -3,7 +3,19 @@
     flex-direction: row;
 }
 
+.trending_section h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+}
+
 .trending_section img{
-    height: 600px;
-    width: 1000px;
+    height: 400px;
+    width: 600px;
 } 
+
+.trending_section li{
+    font-size: 20px;
+    color: white;
+}

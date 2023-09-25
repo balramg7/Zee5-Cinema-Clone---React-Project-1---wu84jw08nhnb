@@ -1,8 +1,8 @@
+import Card from "@mui/material/Card";
 import React, { useEffect, useState } from "react";
-import styles from "./TrendingNow.module.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Card from "@mui/material/Card";
+import styles from "./TrendingNow.module.css";
 
 const TrendingNow = () => {
   const [trendingData, setTrendingData] = useState([]);
@@ -18,32 +18,36 @@ const TrendingNow = () => {
 
   return (
     <div className={styles.trending_section}>
-      <Carousel
-        
-      >
-        <h2>Trending New</h2>
+      <h2>Trending New</h2>
 
-        <ul>
-          {/* Map through trendingData and display list items */}
+      <ul>
+        {/* Map through trendingData and display list items */}
+        <Carousel
+          interval={2000}
+          infiniteLoop={true}
+          showThumbs={false}
+          showArrows={true}
+          autoPlay={true}
+        >
           {trendingData.map((item) => (
             <Card
+              key={item.id}
               style={{
                 display: "flex",
                 flexDirection: "row",
                 gap: "20px",
-                margin: "10px",
-                height:"650px",
-                width: "150%"
+                margin: "20px",
+                backgroundColor: "black",
+                display: "flex",
+                flexDirection: "column"
               }}
             >
-              <div key={item.id}>
-                <img src={item.thumbnail} alt={item.title} />
-                <li key={item.id}>{item.title}</li>
-              </div>
+              <img src={item.thumbnail} alt={item.title} />
+              <li key={item.id}>{item.title}</li>
             </Card>
           ))}
-        </ul>
-      </Carousel>
+        </Carousel>
+      </ul>
     </div>
   );
 };
