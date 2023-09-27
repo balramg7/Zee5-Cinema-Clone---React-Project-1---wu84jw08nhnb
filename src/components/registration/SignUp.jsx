@@ -40,44 +40,51 @@ const SignUp = () => {
   };
   return (
     <div className={styles.registration_page}>
-      <Card
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "20px",
-          margin: "10px",
-          backgroundColor: "blue",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <h2>Registration</h2>
+      <Card className={styles.registration_card}>
+        <h2 className={styles.registration_heading}>Registration</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          /><br/>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          /><br/>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          /><br/>
-          <button type="submit">Register</button>
+          <div className={styles.form_control}>
+            <label className={styles.registration_labels}>Name</label>
+            <input
+              className={styles.registration_input}
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className={styles.form_control}>
+            <label className={styles.registration_labels}>Email</label>
+            <input
+              className={styles.registration_input}
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className={styles.form_control}>
+            <label className={styles.registration_labels}>Password</label>
+            <input
+              className={styles.registration_input}
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              minLength={22}
+              required
+            />
+          </div>
+          <div>
+            <button className={styles.registration_btn} type="submit">
+              Register
+            </button>
+          </div>
+          <div className={styles.registration_para}>
+            <p>Already registered? Login</p>
+          </div>
         </form>
       </Card>
     </div>
