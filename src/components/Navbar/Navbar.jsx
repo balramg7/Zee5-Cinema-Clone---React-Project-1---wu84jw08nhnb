@@ -3,7 +3,8 @@ import styles from "./Navbar.module.css";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { IoReorderThree } from "react-icons/io5";
-import {TbGridDots} from 'react-icons/tb';
+import { TbGridDots } from "react-icons/tb";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
@@ -24,17 +25,25 @@ const Navbar = () => {
         <li className={styles.nav_item}>Movies</li>
         <li className={styles.nav_item}>Premium</li>
         <li className={styles.nav_item}>Webseries</li>
-        <li className={styles.nav_item}><TbGridDots/></li>
+        <li className={styles.nav_item}>
+          <TbGridDots />
+        </li>
       </ul>
       <div className={styles.search_bar}>
         <FiSearch color="white" />
-        <input type="text" placeholder="Search for Movies,Shows,Channels etc" color="white" />
+        <input
+          type="text"
+          placeholder="Search for Movies,Shows,Channels etc"
+          color="white"
+        />
       </div>
       <div className={styles.user_actions}>
         <button className={styles.Lang_btn}>
           <HiOutlineLanguage />
         </button>
-        <button className={styles.login_btn}>Login</button>
+        <Link to="/signIn">
+          <button className={styles.login_btn}>LogIn</button>
+        </Link>
         <button className={styles.plan_btn}>Buy Plan</button>
         <button className={styles.last_btn}>
           <IoReorderThree />

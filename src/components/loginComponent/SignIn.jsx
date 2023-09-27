@@ -1,6 +1,7 @@
 import styles from "./SignIn.module.css";
 import Card from "@mui/material/Card";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,10 @@ const SignIn = () => {
             </button>
           </div>
           <div className={styles.login_para}>
-            <p>New to ZEE5 ?  Register</p>
+            <p> <Link to='/resetPass'>Forgotten Password?</Link></p>
+          </div>
+          <div className={styles.login_para}>
+            <p>New to ZEE5 ? <Link to='/signUp'>Register</Link></p>
           </div>
         </form>
       </Card>

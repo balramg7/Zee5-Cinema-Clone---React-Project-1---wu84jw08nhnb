@@ -1,6 +1,7 @@
 import styles from "./SignUp.module.css";
 import Card from "@mui/material/Card";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -82,8 +83,9 @@ const SignUp = () => {
               Register
             </button>
           </div>
+          
           <div className={styles.registration_para}>
-            <p>Already registered? Login</p>
+            <p>Already registered? <Link to='/signIn'>Login</Link></p>
           </div>
         </form>
       </Card>

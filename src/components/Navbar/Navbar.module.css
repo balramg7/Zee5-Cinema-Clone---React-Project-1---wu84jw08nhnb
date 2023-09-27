@@ -1,4 +1,7 @@
 @import"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap";
+body{
+    background-color: black;
+}
 .logo{
     padding: 0;
     margin: 0 5px;
@@ -29,12 +32,15 @@
     display: flex;
     flex-direction: unset;
     justify-content: center;
-    color: white;
+    
 }
 
 .search_bar input{
     border: none;
     width: 400px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: white;
 }
 
 .search_button{
@@ -49,11 +55,12 @@
     color: white;
     margin: 0 20px;
     border-radius: 50%;
+    background-color: black;
 }
 
 .plan_btn{
     background-color: #8230c6;
-    color: white;
+    
     margin: 0 20px;
     padding: 0 5px;
     border-radius: 5px;
@@ -71,6 +78,7 @@
     width: 80px;
     height: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
 }
 
 .last_btn{
@@ -79,4 +87,5 @@
     border: none;
     font-size: 25px;
     padding: 20px;
+    background-color: black;
 }
