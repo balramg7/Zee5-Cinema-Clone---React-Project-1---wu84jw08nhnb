@@ -12,7 +12,7 @@ const CarouselCard = () => {
     const apiUrlCarousel =
       "https://academics.newtonschool.co/api/v1/ott/show?limit=5";
 
-    fetch(apiUrlCarousel, { headers: { projectId: "f104bi07c490" } })
+    fetch(apiUrlCarousel, { headers: { projectId: "8jf3b15onzua" } })
       .then((response) => response.json())
       .then((data) => setCarouselData(data.data));
   }, []);

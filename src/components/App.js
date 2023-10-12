@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/App.css";
+// import WatchList from "./watchList/WatchList.jsx";
+// import ContentDetails from "./contentDetails/ContentDetails.jsx";
 import Navbar from "./Navbar/Navbar.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CarouselCard from "./home/CarouselCard.jsx";
@@ -19,9 +21,8 @@ const App = () => {
         <Route path="/resetPass" element={<ResetPass />} />
       </Routes>
       </BrowserRouter>
-      
-      {/* <SignIn /> */}
-      {/* <ResetPass /> */}
+      {/* <ContentDetails /> */}
+      {/* <WatchList /> */}
     </>
   );
 };

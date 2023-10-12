@@ -25,6 +25,7 @@ const SignUp = () => {
           body: JSON.stringify({ ...formData, appType: "ott" }),
           headers: {
             "Content-Type": "application/json",
+            projectID: "wu84jw08nhnb"
           },
         }
       );

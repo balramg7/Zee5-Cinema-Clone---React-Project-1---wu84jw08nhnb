@@ -15,6 +15,7 @@ const PopularCard = () => {
       .then((response) => response.json())
       .then((data) => setPopularData(data.data));
   }, []);
+  // console.log(popularData);
   return (
     <div className={styles.popular_section}>
       <h2>Popular Shows & Movies</h2>
