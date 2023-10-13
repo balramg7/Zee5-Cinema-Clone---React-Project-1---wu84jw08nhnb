@@ -11,7 +11,7 @@ const PopularCard = () => {
     const apiUrlPopular =
       "https://academics.newtonschool.co/api/v1/ott/show?page=1&limit=10";
 
-    fetch(apiUrlPopular, { headers: { projectId: "f104bi07c490" } })
+    fetch(apiUrlPopular, { headers: { projectId: "wu84jw08nhnb" } })
       .then((response) => response.json())
       .then((data) => setPopularData(data.data));
   }, []);

@@ -11,7 +11,7 @@ const TrendingNow = () => {
     const apiUrlTrending =
       "https://academics.newtonschool.co/api/v1/ott/show?page=1&limit=10";
 
-    fetch(apiUrlTrending, { headers: { projectId: "f104bi07c490" } })
+    fetch(apiUrlTrending, { headers: { projectId: "wu84jw08nhnb" } })
       .then((response) => response.json())
       .then((data) => setTrendingData(data.data));
   }, []);
