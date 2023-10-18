@@ -32,6 +32,7 @@ const PopularCard = () => {
           showIndicators={false}
           centerMode
           centerSlidePercentage={30}
+          useKeyboardArrows
         >
           {popularData.map((item) => (
             <Card
@@ -45,7 +46,8 @@ const PopularCard = () => {
                 height: "100%",
                 width: "70%",
                 color: "whitesmoke",
-                fontSize: "10px"
+                fontSize: "10px",
+                background: "transparent",
               }}
             >
               <img src={item.thumbnail} alt={item.title} />

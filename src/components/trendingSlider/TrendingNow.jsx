@@ -33,6 +33,7 @@ const TrendingNow = () => {
           showIndicators={false}
           centerMode
           centerSlidePercentage={30}
+          useKeyboardArrows
         >
           {trendingData.map((item) => (
             <Card

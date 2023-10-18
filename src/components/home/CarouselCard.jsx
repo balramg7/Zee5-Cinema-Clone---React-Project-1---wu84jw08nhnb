@@ -29,6 +29,7 @@ const CarouselCard = () => {
           showThumbs={false}
           centerMode
           centerSlidePercentage={75}
+          useKeyboardArrows
         >
           {/* Map through carouselData and display carousel items */}
           {carouselData.map((item) => (
