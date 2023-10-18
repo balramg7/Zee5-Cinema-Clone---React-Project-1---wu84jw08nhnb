@@ -20,26 +20,33 @@ const TrendingNow = () => {
     <div className={styles.trending_section}>
       <h2>Trending New</h2>
 
-      <ul>
+      <ul className={styles.trending_card}>
         {/* Map through trendingData and display list items */}
         <Carousel
           interval={2000}
           infiniteLoop={true}
           showThumbs={false}
-          showArrows={true}
+          stopOnHover={false}
           autoPlay={true}
+          showStatus={false}
+          // width={"100%"}
+          showIndicators={false}
+          centerMode
+          centerSlidePercentage={30}
         >
           {trendingData.map((item) => (
             <Card
               key={item.id}
               style={{
                 display: "flex",
-                flexDirection: "row",
+                flexDirection: "column",
                 gap: "20px",
-                margin: "20px",
-                backgroundColor: "black",
-                display: "flex",
-                flexDirection: "column"
+                margin: "10px",
+                backgroundColor: "transparent",
+                height: "100%",
+                width: "70%",
+                color: "whitesmoke",
+                fontSize: "10px"
               }}
             >
               <img src={item.thumbnail} alt={item.title} />

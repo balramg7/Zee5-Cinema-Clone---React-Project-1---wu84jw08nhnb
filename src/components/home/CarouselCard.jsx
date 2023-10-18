@@ -27,6 +27,8 @@ const CarouselCard = () => {
           autoPlay={true}
           interval={2000}
           showThumbs={false}
+          centerMode
+          centerSlidePercentage={75}
         >
           {/* Map through carouselData and display carousel items */}
           {carouselData.map((item) => (

@@ -25,20 +25,27 @@ const PopularCard = () => {
           interval={2000}
           infiniteLoop={true}
           showThumbs={false}
-          showArrows={true}
+          stopOnHover={true}
           autoPlay={true}
+          showStatus={false}
+          width={"100%"}
+          showIndicators={false}
+          centerMode
+          centerSlidePercentage={30}
         >
           {popularData.map((item) => (
             <Card
               key={item.id}
               style={{
                 display: "flex",
-                flexDirection: "row",
+                flexDirection: "column",
                 gap: "20px",
                 margin: "10px",
-                backgroundColor: "black",
-                display: "flex",
-                flexDirection: "column",
+                backgroundColor: "transparent",
+                height: "100%",
+                width: "70%",
+                color: "whitesmoke",
+                fontSize: "10px"
               }}
             >
               <img src={item.thumbnail} alt={item.title} />
