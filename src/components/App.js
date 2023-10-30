@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "../styles/App.css";
-import ContentDetails from "./contentDetails/ContentDetails.jsx";
-import Navbar from "./Navbar/Navbar.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "../styles/App.css";
+import Navbar from "./Navbar/Navbar.jsx";
+import ContentDetails from "./contentDetails/ContentDetails.jsx";
 import CarouselCard from "./home/CarouselCard.jsx";
-import SignUp from "./registration/SignUp.jsx";
 import SignIn from "./loginComponent/SignIn.jsx";
-import ResetPass from "./resetPassword/resetPass.jsx";
+import SignUp from "./registration/SignUp.jsx";
+// import ResetPass from "./resetPassword/ResetPass.jsx";
+import ResetPass from "./resetPassword/ResetPass.jsx";
 import WatchList from "./watchList/WatchList.jsx";
 
 
