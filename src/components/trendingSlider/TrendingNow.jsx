@@ -20,16 +20,17 @@ const TrendingNow = () => {
     <div className={styles.trending_section}>
       <h2>Trending New</h2>
 
-      <ul className={styles.trending_card}>
+      <ul>
         {/* Map through trendingData and display list items */}
         <Carousel
+        className={styles.trending_carousel}
           interval={2000}
           infiniteLoop={true}
           showThumbs={false}
           stopOnHover={false}
           autoPlay={true}
           showStatus={false}
-          // width={"100%"}
+          width={"100%"}
           showIndicators={false}
           centerMode
           centerSlidePercentage={30}
@@ -37,6 +38,7 @@ const TrendingNow = () => {
         >
           {trendingData.map((item) => (
             <Card
+            className={styles.trending_card}
               key={item.id}
               style={{
                 display: "flex",
@@ -47,11 +49,11 @@ const TrendingNow = () => {
                 height: "100%",
                 width: "70%",
                 color: "whitesmoke",
-                fontSize: "10px"
+                fontSize: "10px",
               }}
             >
               <img src={item.thumbnail} alt={item.title} />
-              <li key={item.id}>{item.title}</li>
+              <p key={item.id}>{item.title}</p>
             </Card>
           ))}
         </Carousel>

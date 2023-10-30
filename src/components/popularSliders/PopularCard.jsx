@@ -19,7 +19,7 @@ const PopularCard = () => {
   return (
     <div className={styles.popular_section}>
       <h2>Popular Shows & Movies</h2>
-      <ul>
+      <ul className={styles.popular_carousel}>
         {/* Map through popularData and display list items */}
         <Carousel
           interval={2000}
@@ -36,6 +36,7 @@ const PopularCard = () => {
         >
           {popularData.map((item) => (
             <Card
+              className={styles.popular_card}
               key={item.id}
               style={{
                 display: "flex",
@@ -47,7 +48,6 @@ const PopularCard = () => {
                 width: "70%",
                 color: "whitesmoke",
                 fontSize: "10px",
-                background: "transparent",
               }}
             >
               <img src={item.thumbnail} alt={item.title} />

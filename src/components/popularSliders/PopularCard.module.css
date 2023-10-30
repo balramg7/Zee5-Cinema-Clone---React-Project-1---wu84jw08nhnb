@@ -21,3 +21,11 @@
     font-size: 15px;
     color: white;
 }
+
+.popular_card:hover{
+    transform: scale(1.2);
+}
+
+.popular_carousel{
+    background: transparent;
+}

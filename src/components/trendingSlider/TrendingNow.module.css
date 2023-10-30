@@ -18,7 +18,11 @@
     width: 600px;
 } 
 
-.trending_section li{
+.trending_section p{
     font-size: 15px;
     color: white;
+}
+
+.trending_card:hover{
+    transform: scale(1.2);
 }

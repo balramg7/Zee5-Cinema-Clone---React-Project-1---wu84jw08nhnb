@@ -1,63 +1,99 @@
-import React, { useEffect, useState, useRef } from 'react';
-import ReactPlayer from 'react-player';
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import ReactPlayer from "react-player";
+import { useParams } from "react-router-dom";
+import styles from "./ContentDetails.module.css";
+import { FcAddDatabase } from "react-icons/fc";
+import { TiTick } from "react-icons/ti";
 
-const ContentDetails = () => {
-  const [content, setContent] = useState({});
-  const playerRef = useRef(null);
-  
-  // Extract the id from the URL
-  const urlParts = window.location.pathname.split('/');
-  const id = urlParts[urlParts.length - 1];
-
-  useEffect(() => {
-    // Fetch content details using the API
-    fetch(`https://academics.newtonschool.co/api/v1/ott/show/64cffee700bad552e8dcd509`, {
-      headers: {
-        projectId: 'wu84jw08nhnb',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setContent(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching content details:', error);
-      });
-  }, [id]);
+const ContentDetails = ({ addToWatchlist }) => {
+  const [content, setContent] = useState(null);
+  const { _id } = useParams();
+  const [isAddedToWatchlist, setIsAddedToWatchlist] = useState(false); // Step 1
 
   useEffect(() => {
-    // When the component mounts, check if there is a saved playback position
-    const savedPosition = localStorage.getItem(`continueWatching_${id}`);
-    if (savedPosition) {
-      // Use the saved position to seek the video player to the saved time
-      playerRef.current.seekTo(parseFloat(savedPosition));
-    }
-
-    // When the component unmounts, save the current playback position
-    return () => {
-      localStorage.setItem(`continueWatching_${id}`, playerRef.current.getCurrentTime());
+    const fetchContentDetails = async () => {
+      try {
+        const response = await fetch(
+          `https://academics.newtonschool.co/api/v1/ott/show/${_id}`,
+          {
+            headers: {
+              projectId: "wu84jw08nhnb",
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setContent(data.data);
+        } else {
+          // Handle the error if needed
+          console.error("Error fetching content details");
+        }
+      } catch (error) {
+        console.error("Error fetching content details:", error);
+      }
     };
-  }, [id]);
 
+    fetchContentDetails();
+  }, [_id]);
 
-  console.log(content);
+  const handleAddToWatchlist = () => {
+    if (!isAddedToWatchlist) {
+      addToWatchlist(content);
+    }
+    setIsAddedToWatchlist(!isAddedToWatchlist);
+  };
 
   return (
-    <div>
-      <h1>{content.title}</h1>
-      <p>Genre: {content.genre}</p>
-      <p>Release Year: {content.createdAt}</p>
-      <p>Synopsis: {content.description}</p>
-      {/* <p>Cast: {content.cast.join(', ')}</p>
-      <p>Directors: {content.directors.join(', ')}</p> */}
-      <p>Rating: {content.rating}</p>
+    <div className={styles.content_page}>
+      {content === null ? (
+        <p>Loading...</p>
+      ) : content ? (
+        <div style={{ margin: "0px" }}>
+          <ReactPlayer
+            url={content.video_url}
+            controls={true}
+            muted={true}
+            pip={true}
+            width={"1000px"}
+            height={"500px"}
+            style={{
+              margin: "0px",
+              border: "1px solid transparent",
+            }}
+          />
+          <h2 className={styles.content_title}>{content.title}</h2>
+          <div className={styles.content_description}>
+            {content.description}
+          </div>
+          <div className={styles.content_section}>
+            <div className={styles.content_keyword}>
+              {content.keywords[0]}, {content.keywords[1]},{" "}
+              {content.keywords[2]}
+            </div>
+            <div className={styles.content_year}>{content.createdAt}</div>
+          </div>
 
-      <ReactPlayer
-        ref={playerRef}
-        url={content.video_url}
-        width="100%"
-        height="100%"
-      />
+          <div className={styles.content_author}>
+            Cast: {content.cast[0]}, {content.cast[1]}, {content.cast[2]}
+          </div>
+
+          <button className={styles.content_btn} onClick={handleAddToWatchlist}>
+            {isAddedToWatchlist ? (
+              <span>
+                <TiTick /> Watchlist
+              </span>
+            ) : (
+              <span>
+                <FcAddDatabase /> Watchlist
+              </span>
+            )}
+          </button>
+        </div>
+      ) : (
+        <p>No content available</p>
+      )}
     </div>
   );
 };
