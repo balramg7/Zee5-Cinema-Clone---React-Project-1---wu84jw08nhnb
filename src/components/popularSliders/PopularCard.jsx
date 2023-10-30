@@ -15,7 +15,7 @@ const PopularCard = () => {
       .then((response) => response.json())
       .then((data) => setPopularData(data.data));
   }, []);
-  // console.log(popularData);
+  console.log(popularData);
   return (
     <div className={styles.popular_section}>
       <h2>Popular Shows & Movies</h2>
@@ -37,7 +37,7 @@ const PopularCard = () => {
           {popularData.map((item) => (
             <Card
               className={styles.popular_card}
-              key={item.id}
+              key={item._id}
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -51,7 +51,7 @@ const PopularCard = () => {
               }}
             >
               <img src={item.thumbnail} alt={item.title} />
-              <li key={item.id}>{item.title}</li>
+              <li key={item._id}>{item.title}</li>
             </Card>
           ))}
         </Carousel>

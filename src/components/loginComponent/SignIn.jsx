@@ -24,6 +24,7 @@ const SignIn = () => {
           body: JSON.stringify({ ...formData, appType: "ott" }),
           headers: {
             "Content-Type": "application/json",
+            projectId: "wu84jw08nhnb",
           },
         }
       );

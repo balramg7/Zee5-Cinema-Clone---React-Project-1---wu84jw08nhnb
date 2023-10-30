@@ -39,7 +39,7 @@ const TrendingNow = () => {
           {trendingData.map((item) => (
             <Card
             className={styles.trending_card}
-              key={item.id}
+              key={item._id}
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -53,7 +53,7 @@ const TrendingNow = () => {
               }}
             >
               <img src={item.thumbnail} alt={item.title} />
-              <p key={item.id}>{item.title}</p>
+              <p key={item._id}>{item.title}</p>
             </Card>
           ))}
         </Carousel>
