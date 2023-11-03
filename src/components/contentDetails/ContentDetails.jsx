@@ -6,26 +6,19 @@ import { useParams } from "react-router-dom";
 import styles from "./ContentDetails.module.css";
 import { FcAddDatabase } from "react-icons/fc";
 import { TiTick } from "react-icons/ti";
+import axiosInstance from "../../services/axiosInstance";
 
 const ContentDetails = ({ addToWatchlist }) => {
   const [content, setContent] = useState(null);
   const { _id } = useParams();
-  const [isAddedToWatchlist, setIsAddedToWatchlist] = useState(false); // Step 1
+  const [isAddedToWatchlist, setIsAddedToWatchlist] = useState(false);
 
   useEffect(() => {
     const fetchContentDetails = async () => {
       try {
-        const response = await fetch(
-          `https://academics.newtonschool.co/api/v1/ott/show/${_id}`,
-          {
-            headers: {
-              projectId: "wu84jw08nhnb",
-            },
-          }
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setContent(data.data);
+        const response = await axiosInstance.get(`/ott/show/${_id}`);
+        if (response.status === 200) {
+          setContent(response.data.data);
         } else {
           // Handle the error if needed
           console.error("Error fetching content details");
@@ -67,13 +60,10 @@ const ContentDetails = ({ addToWatchlist }) => {
           <div className={styles.content_description}>
             {content.description}
           </div>
-          <div className={styles.content_section}>
-            <div className={styles.content_keyword}>
-              {content.keywords[0]}, {content.keywords[1]},{" "}
-              {content.keywords[2]}
-            </div>
-            <div className={styles.content_year}>{content.createdAt}</div>
+          <div className={styles.content_keyword}>
+            {content.keywords[0]}, {content.keywords[1]}, {content.keywords[2]}
           </div>
+          <div className={styles.content_year}>{content.createdAt}</div>
 
           <div className={styles.content_author}>
             Cast: {content.cast[0]}, {content.cast[1]}, {content.cast[2]}

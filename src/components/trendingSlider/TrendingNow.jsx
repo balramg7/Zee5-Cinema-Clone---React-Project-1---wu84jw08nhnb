@@ -3,19 +3,22 @@ import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./TrendingNow.module.css";
-
+import axiosInstance from "../../services/axiosInstance";
 const TrendingNow = () => {
   const [trendingData, setTrendingData] = useState([]);
 
   useEffect(() => {
-    const apiUrlTrending =
-      "https://academics.newtonschool.co/api/v1/ott/show?page=1&limit=10";
-
-    fetch(apiUrlTrending, { headers: { projectId: "wu84jw08nhnb" } })
-      .then((response) => response.json())
-      .then((data) => setTrendingData(data.data));
+    axiosInstance
+      .get("/ott/show?page=${page}&limit=${limit}")
+      .then((response) => {
+        setTrendingData(response.data.data);
+      })
+      .catch((error) => {
+        console.error("An error occurred:", error);
+      });
   }, []);
-
+  
+// console.log(trendingData);
   return (
     <div className={styles.trending_section}>
       <h2>Trending New</h2>

@@ -2,6 +2,7 @@ import styles from "./SignUp.module.css";
 import Card from "@mui/material/Card";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axiosInstance from "../../services/axiosInstance";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -18,19 +19,12 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://academics.newtonschool.co/api/v1/user/signup",
-        {
-          method: "POST",
-          body: JSON.stringify({ ...formData, appType: "ott" }),
-          headers: {
-            "Content-Type": "application/json",
-            projectID: "wu84jw08nhnb"
-          },
-        }
-      );
+      const response = await axiosInstance.post("/user/signup", {
+        ...formData,
+        appType: "ott",
+      });
 
-      if (response.ok) {
+      if (response.status !== 200) {
         alert("Registration successful! You can now log in.");
         // Redirect to login page or perform other actions
       } else {
@@ -40,6 +34,8 @@ const SignUp = () => {
       console.error("Error:", error);
     }
   };
+
+
   return (
     <div className={styles.registration_page}>
       <Card className={styles.registration_card}>
@@ -75,7 +71,7 @@ const SignUp = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              minLength={22}
+              minLength={8}
               required
             />
           </div>

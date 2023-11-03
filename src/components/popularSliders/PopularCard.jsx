@@ -3,19 +3,30 @@ import styles from "./PopularCard.module.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Card from "@mui/material/Card";
+import axiosInstance from "../../services/axiosInstance";
+
 
 const PopularCard = () => {
   const [popularData, setPopularData] = useState([]);
 
   useEffect(() => {
-    const apiUrlPopular =
-      "https://academics.newtonschool.co/api/v1/ott/show?page=1&limit=10";
+    const fetchPopularData = async () => {
+      try {
+        const response = await axiosInstance.get("/ott/show?page=${page}&limit=${limit}");
+        if (response.status === 200) {
+          setPopularData(response.data.data);
+        } else {
+          // Handle the error if needed
+          console.error("Error fetching popular data");
+        }
+      } catch (error) {
+        console.error("Error fetching popular data:", error);
+      }
+    };
 
-    fetch(apiUrlPopular, { headers: { projectId: "wu84jw08nhnb" } })
-      .then((response) => response.json())
-      .then((data) => setPopularData(data.data));
+    fetchPopularData();
   }, []);
-  console.log(popularData);
+  // console.log(popularData);
   return (
     <div className={styles.popular_section}>
       <h2>Popular Shows & Movies</h2>

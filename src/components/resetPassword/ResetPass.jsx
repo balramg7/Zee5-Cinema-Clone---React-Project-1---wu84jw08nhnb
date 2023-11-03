@@ -17,18 +17,12 @@ const ResetPass = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://academics.newtonschool.co/api/v1/user/updateMyPassword",
-        {
-          method: "PATCH",
-          body: JSON.stringify({ ...formData, appType: "ott" }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axiosInstance.patch("/user/updateMyPassword", {
+        ...formData,
+        appType: "ott",
+      });
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert(
           "Password reset successful! You can now log in with your new password."
         );
@@ -40,6 +34,8 @@ const ResetPass = () => {
       console.error("Error:", error);
     }
   };
+
+  
   return (
     <div className={styles.reset_page}>
       <Card className={styles.reset_card}>

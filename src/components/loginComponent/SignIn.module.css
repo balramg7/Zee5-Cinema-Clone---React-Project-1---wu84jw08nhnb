@@ -26,6 +26,7 @@
     font-size: 40px;
     font-weight: 900;
     font-style: italic;
+    text-align: center;
   }
   .login_control {
       display: flex;
@@ -53,8 +54,7 @@
   
   
   .login_btn{
-    display: flex;
-    justify-self: center;
+    margin-left: 150px;
     padding: 5px 30px ;
     font-size: 15px;
     border-radius: 5px;

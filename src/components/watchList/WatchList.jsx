@@ -1,28 +1,25 @@
 import styles from "./WatchList.module.css";
 import React, { useEffect} from "react";
+import axiosInstance from "../../services/axiosInstance";
 
 const WatchList = ({ watchlist }) => {
   // const [watchlist, setWatchlist] = useState([]);
   const jwtToken =
     "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWxyYW1ndXB0YTc1MzRAZ21haWwuY29tIiwiaWF0IjoxNjg3ODQ0MDI4LCJleHAiOjE2ODc5MzA0Mjh9.l-y_CEt2NTMjH074P6rYm8OWRgNSGRfke3NbrCKIKSE";
-  const projectID = "wu84jw08nhnb";
+  
 
   useEffect(() => {
     const fetchWatchlist = async () => {
       try {
-        const response = await fetch(
-          "https://academics.newtonschool.co/api/v1/ott/watchlist/like",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${jwtToken}`,
-              projectID: projectID,
-            },
-          }
-        );
+        const response = await axiosInstance.get("/watchlist/like", {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+            
+          },
+        });
 
-        if (response.ok) {
-          const data = await response.json();
+        if (response.status === 200) {
+          const data = response.data;
           setWatchlist(data);
         } else {
           console.error("Error fetching watchlist:", response.status);
@@ -33,25 +30,30 @@ const WatchList = ({ watchlist }) => {
     };
 
     fetchWatchlist();
-  }, []); // The empty dependency array ensures this effect runs only once
+  }, [jwtToken]);
 
   const removeFromWatchlist = (showId) => {
     setWatchlist(watchlist.filter((item) => item.showId !== showId));
   };
-  console.log(watchlist.data);
+  console.log(watchlist);
   return (
     <div className={styles.watchlist_div}>
       <h2 className={styles.watchlist_heading}>My Watchlist</h2>
       {watchlist && watchlist.length > 0 ? (
         <ul>
           {watchlist.map((item, index) => (
+            <div key={index}>
             <li key={index}>{item.title}</li>
+      </div>
+
           ))}
         </ul>
+        
       ) : (
         <p className={styles.watchlist_p}>Your watchlist is empty.</p>
       )}
       <button onClick={() => removeFromWatchlist(item.showId)}>Remove</button>
+
     </div>
   );
 };

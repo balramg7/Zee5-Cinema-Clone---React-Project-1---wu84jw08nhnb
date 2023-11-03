@@ -1,6 +1,6 @@
 .home_page{
 color: white;
-width: auto;
+min-width: 1000px;
 }
 
 .hero_section img{

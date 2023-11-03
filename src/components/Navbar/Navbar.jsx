@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { IoReorderThree } from "react-icons/io5";
 import { TbGridDots } from "react-icons/tb";
-import { Link } from "react-router-dom";
-const Navbar = () => {
+import { Link, useNavigate } from "react-router-dom";
+import { BiCrown } from "react-icons/bi";
+import { BsFillPersonFill } from "react-icons/bs";
+import {
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
+
+const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
+  const navigate = useNavigate();
+
+  const goToTheSignIn = () => {
+    navigate("/signIn");
+  };
+
+  const goToTheWatchlist = () => {
+    navigate("/watchList");
+  };
+
+  const goToTheProfileSetting = () => {
+    navigate("/userProfile");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userToken");
+    setUserAuthenticated(null);
+  };
+
+  
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
@@ -41,10 +72,61 @@ const Navbar = () => {
         <button className={styles.Lang_btn}>
           <HiOutlineLanguage />
         </button>
-        <Link to="/signIn">
-          <button className={styles.login_btn}>LogIn</button>
-        </Link>
-        <button className={styles.plan_btn}>Buy Plan</button>
+
+        <button className={styles.plan_btn}>
+          <BiCrown />
+          Buy Plan
+        </button>
+
+        {userAuthenticated ? (
+          <>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                icon={<BsFillPersonFill />}
+                px={4}
+                py={2}
+                transition="all 0.2s"
+                borderRadius="md"
+                borderWidth="1px"
+                _hover={{ bg: "gray.400" }}
+                _expanded={{ bg: "blue.400" }}
+                _focus={{ boxShadow: "outline" }}
+                fontSize="30px"
+                background="transparent"
+                color="white"
+                border="none"
+                marginLeft="10px"
+                marginRight="10px"
+              />
+              <MenuList bg="black">
+                <MenuItem
+                  bg="black"
+                  zIndex="2"
+                  color="white"
+                  onClick={goToTheProfileSetting}
+                >
+                  Profile Setting
+                </MenuItem>
+                <MenuItem onClick={goToTheWatchlist}>Watchlist</MenuItem>
+                <MenuItem>Term and Condition</MenuItem>
+                <MenuItem>Subscription</MenuItem>
+                <MenuItem>Policy</MenuItem>
+              </MenuList>
+            </Menu>
+            <button className={styles.login_btn} onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/signIn">
+            <button className={styles.login_btn} onClick={goToTheSignIn}>
+              LogIn
+            </button>
+          </Link>
+        )}
+
+        
         <button className={styles.last_btn}>
           <IoReorderThree />
         </button>

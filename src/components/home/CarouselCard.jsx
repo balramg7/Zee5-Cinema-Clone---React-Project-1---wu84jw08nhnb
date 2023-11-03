@@ -4,18 +4,35 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PopularCard from "../popularSliders/PopularCard.jsx";
 import TrendingNow from "../trendingSlider/TrendingNow.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../services/axiosInstance";
 
 const CarouselCard = () => {
+  const navigate = useNavigate();
   const [carouselData, setCarouselData] = useState([]);
 
   useEffect(() => {
-    const apiUrlCarousel =
-      "https://academics.newtonschool.co/api/v1/ott/show?limit=5";
+    if (status === "success") {
+      navigate('/signIn')
+    }
+  }, [])
 
-    fetch(apiUrlCarousel, { headers: { projectId: "wu84jw08nhnb" } })
-      .then((response) => response.json())
-      .then((data) => setCarouselData(data.data));
+  useEffect(() => {
+    const fetchCarouselData = async () => {
+      try {
+        const response = await axiosInstance.get("/ott/show?limit=${limit}");
+        if (response.status === 200) {
+          setCarouselData(response.data.data);
+        } else {
+          // Handle the error if needed
+          console.error("Error fetching carousel data");
+        }
+      } catch (error) {
+        console.error("Error fetching carousel data:", error);
+      }
+    };
+
+    fetchCarouselData();
   }, []);
 
   return (
