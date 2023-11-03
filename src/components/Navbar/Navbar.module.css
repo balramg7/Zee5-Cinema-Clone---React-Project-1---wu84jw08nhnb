@@ -1,19 +1,18 @@
 @import"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap";
 body{
-    background-color: black;
+    background-color: black
 }
 .logo{
     padding: 0;
     margin: 0 5px;
 }
 .navbar{
-    margin: 0 auto;
     display: flex;
-    justify-items: end;
+    flex-direction: row;
     align-items: center;
     background-color: black;
     color: white;
-    max-width: 1887px;
+    min-width: 1000px;
 }
 
 .nav_list{
@@ -54,36 +53,41 @@ body{
 
 .user_actions{
     justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .Lang_btn{
     color: white;
-    margin: 0 20px;
-    border-radius: 50%;
+    margin: 0 10px;
+    border-radius: 20px;
     background-color: black;
 }
 
 .plan_btn{
     background-color: #8230c6;
-    
-    margin: 0 20px;
-    padding: 0 5px;
-    border-radius: 5px;
-    font-size: 20px;
+    text-align: center;
+    margin: 0 10px;
+    padding: 0 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 500;
     width: 130px;
-    height: 40px;
+    height: 42px;
 }
 
 .login_btn{
     color: white;
-    padding: 5px 10px;
+    border-radius: 10px;
+    padding: 0px 10px;
     text-align: center;
-    margin: 0 20px;
+    margin: 0 10px;
     border: 1px solid white;
-    width: 80px;
-    height: 30px;
+    width: 100px;
+    height: 35px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: black;
+    background-color: green;
 }
 
 .last_btn{

@@ -1,9 +1,32 @@
 import styles from "./SignIn.module.css";
 import Card from "@mui/material/Card";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../services/axiosInstance";
 
-const SignIn = () => {
+const SignIn = ({ setUserAuthenticated }) => {
+  const navigate = useNavigate();
+
+  const generateUserToken = () => {
+    const tokenLength = 22;
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let token = "";
+
+    for (let i = 0; i < tokenLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      token += characters.charAt(randomIndex);
+    }
+
+    return token;
+  };
+
+  const handleLogin = () => {
+    const userToken = generateUserToken();
+    localStorage.setItem("userToken", userToken);
+    setUserAuthenticated(userToken);
+  };
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,20 +40,14 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://academics.newtonschool.co/api/v1/user/login",
-        {
-          method: "POST",
-          body: JSON.stringify({ ...formData, appType: "ott" }),
-          headers: {
-            "Content-Type": "application/json",
-            projectId: "wu84jw08nhnb",
-          },
-        }
-      );
+      const response = await axiosInstance.post("/user/login", {
+        ...formData,
+        appType: "ott",
+      });
 
-      if (response.ok) {
-        alert("Login successful! Redirect to user profile.");
+      if (response.status === 200) {
+        // alert("Login successful! Redirect to user profile.");
+        navigate("/");
         // Redirect to user profile or perform other actions
       } else {
         alert("Login failed. Please check your credentials.");
@@ -39,6 +56,7 @@ const SignIn = () => {
       console.error("Error:", error);
     }
   };
+
   return (
     <div className={styles.login_page}>
       <Card className={styles.login_card}>
@@ -67,15 +85,24 @@ const SignIn = () => {
             />
           </div>
           <div>
-            <button className={styles.login_btn} type="submit">
+            <button
+              className={styles.login_btn}
+              onClick={handleLogin}
+              type="submit"
+            >
               Login
             </button>
           </div>
           <div className={styles.login_para}>
-            <p> <Link to='/resetPass'>Forgotten Password?</Link></p>
+            <p>
+              
+              <Link to="/resetPass">Forgotten Password?</Link>
+            </p>
           </div>
           <div className={styles.login_para}>
-            <p>New to ZEE5 ? <Link to='/signUp'>Register</Link></p>
+            <p>
+              New to ZEE5 ? <Link to="/signUp">Register</Link>
+            </p>
           </div>
         </form>
       </Card>

@@ -26,6 +26,7 @@
     font-size: 40px;
     font-weight: 900;
     font-style: italic;
+    text-align: center;
   }
   .reset_control {
       display: flex;
@@ -53,8 +54,7 @@
   
   
   .reset_btn{
-    display: flex;
-    justify-self: center;
+    margin-left: 120px;
     padding: 5px 30px ;
     font-size: 15px;
     border-radius: 5px;
