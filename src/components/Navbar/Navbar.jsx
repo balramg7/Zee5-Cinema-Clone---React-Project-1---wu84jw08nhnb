@@ -30,6 +30,10 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
     navigate("/userProfile");
   };
 
+  const goToTheHome = () => {
+    navigate("/");
+  }
+
   const handleLogout = () => {
     localStorage.removeItem("userToken");
     setUserAuthenticated(null);
@@ -49,7 +53,7 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
         />
       </div>
       <ul className={styles.nav_list}>
-        <li className={styles.nav_item}>Home</li>
+        <li onClick={goToTheHome} className={styles.nav_item}>Home</li>
         <li className={styles.nav_item}>TV Shows</li>
         <li className={styles.nav_item}>Movies</li>
         <li className={styles.nav_item}>Premium</li>

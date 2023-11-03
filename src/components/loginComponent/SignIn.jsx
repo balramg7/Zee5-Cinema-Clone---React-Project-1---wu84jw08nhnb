@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../services/axiosInstance";
 
-const SignIn = ({ setUserAuthenticated }) => {
+const SignIn = ({ setUserAuthenticated, userToken }) => {
   const navigate = useNavigate();
 
   const generateUserToken = () => {

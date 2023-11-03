@@ -12,7 +12,7 @@ import WatchList from "./watchList/WatchList.jsx";
 import UserProfile from "./userProfile/UserProfile.jsx";
 
 
-const App = ({handleLogin}) => {
+const App = () => {
   const [userAuthenticated, setUserAuthenticated] = useState(
     !!localStorage.getItem("userToken")
   );
@@ -32,7 +32,7 @@ const App = ({handleLogin}) => {
           <Route path="/signIn" element={<SignIn setUserAuthenticated={setUserAuthenticated}  />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/resetPass" element={<ResetPass />} />
-          <Route path="/watchList" element={<WatchList />} />
+          <Route path="/watchList" element={<WatchList userToken={localStorage.getItem("userToken")} watchlist={watchlist} setWatchlist={setWatchlist} />} />
           <Route path="/userProfile" element={<UserProfile />} />
         </Routes>
       </BrowserRouter>

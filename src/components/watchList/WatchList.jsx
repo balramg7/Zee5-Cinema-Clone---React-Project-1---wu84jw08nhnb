@@ -1,26 +1,23 @@
 import styles from "./WatchList.module.css";
-import React, { useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "../../services/axiosInstance";
+import { Card } from "@chakra-ui/react";
 
-const WatchList = ({ watchlist }) => {
+const WatchList = ({ userToken, watchlist, setWatchlist }) => {
   // const [watchlist, setWatchlist] = useState([]);
-  const jwtToken =
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWxyYW1ndXB0YTc1MzRAZ21haWwuY29tIiwiaWF0IjoxNjg3ODQ0MDI4LCJleHAiOjE2ODc5MzA0Mjh9.l-y_CEt2NTMjH074P6rYm8OWRgNSGRfke3NbrCKIKSE";
-  
 
   useEffect(() => {
     const fetchWatchlist = async () => {
       try {
-        const response = await axiosInstance.get("/watchlist/like", {
+        const response = await axiosInstance.get("/watchlist", {
           headers: {
-            Authorization: `Bearer ${jwtToken}`,
-            
+            Authorization: `Bearer ${userToken}`,
           },
         });
 
-        if (response.status === 200) {
+        if (response.status !== 200) {
           const data = response.data;
-          setWatchlist(data);
+          setWatchlist(data.data);
         } else {
           console.error("Error fetching watchlist:", response.status);
         }
@@ -30,30 +27,46 @@ const WatchList = ({ watchlist }) => {
     };
 
     fetchWatchlist();
-  }, [jwtToken]);
+  }, [userToken]);
 
-  const removeFromWatchlist = (showId) => {
-    setWatchlist(watchlist.filter((item) => item.showId !== showId));
+  const removeFromWatchlist = (_id) => {
+    setWatchlist(watchlist.filter((item) => item._id !== _id));
   };
-  console.log(watchlist);
+
+  
+  
   return (
     <div className={styles.watchlist_div}>
       <h2 className={styles.watchlist_heading}>My Watchlist</h2>
       {watchlist && watchlist.length > 0 ? (
-        <ul>
-          {watchlist.map((item, index) => (
-            <div key={index}>
-            <li key={index}>{item.title}</li>
-      </div>
-
+        <ul className={styles.watchlist_section}>
+          {watchlist.map((item) => (
+            <Card
+              className={styles.watchlist_card}
+              key={item._id}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                margin: "10px",
+                backgroundColor: "transparent",
+                height: "30%",
+                width: "20%",
+                color: "whitesmoke",
+                fontSize: "10px",
+              }}
+            >
+              <img src={item.thumbnail} alt={item.title} />
+              <p key={item._id}>{item.title}</p>
+              <button onClick={() => removeFromWatchlist(item._id)}>
+                Remove
+              </button>
+            </Card>
           ))}
         </ul>
-        
       ) : (
         <p className={styles.watchlist_p}>Your watchlist is empty.</p>
       )}
-      <button onClick={() => removeFromWatchlist(item.showId)}>Remove</button>
-
     </div>
   );
 };
