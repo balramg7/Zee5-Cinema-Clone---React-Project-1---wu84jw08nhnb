@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import Filter from "./filter/Filter.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../styles/App.css";
 import Navbar from "./Navbar/Navbar.jsx";
