@@ -97,17 +97,14 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
                 marginLeft="10px"
                 marginRight="10px"
               />
-              <MenuList  bgColor="grey" zIndex="2" color="white" width="200px" height="100px">
+              <MenuList bg="black" width="200px" zIndex="2" color="white">
                 <MenuItem bg="black" minH="48px" onClick={goToTheProfileSetting}>
                   Profile Setting
                 </MenuItem>
-
-                <MenuItem bg="black" minH="48px" onClick={goToTheWatchlist}>
-                  Watchlist
-                </MenuItem>
+                <MenuItem bg="black" minH="48px" onClick={goToTheWatchlist}>Watchlist</MenuItem>
                 <MenuItem bg="black" minH="48px">Term and Condition</MenuItem>
                 <MenuItem bg="black" minH="48px">Subscription</MenuItem>
-                <MenuItem bg="black" minH="48px" >Policy</MenuItem>
+                <MenuItem bg="black" minH="48px">Policy</MenuItem>
               </MenuList>
             </Menu>
             <button className={styles.login_btn} onClick={handleLogout}>
