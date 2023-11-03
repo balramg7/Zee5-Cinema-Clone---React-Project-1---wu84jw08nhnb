@@ -97,7 +97,7 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
                 marginLeft="10px"
                 marginRight="10px"
               />
-              <MenuList bg="black" width="200px" zIndex="2" color="white">
+              <MenuList border="none" bg="black" width="200px" zIndex="2" color="white">
                 <MenuItem bg="black" minH="48px" onClick={goToTheProfileSetting}>
                   Profile Setting
                 </MenuItem>
