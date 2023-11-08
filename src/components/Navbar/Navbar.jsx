@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Navbar.module.css";
-import { FiSearch } from "react-icons/fi";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { IoReorderThree } from "react-icons/io5";
 import { TbGridDots } from "react-icons/tb";
@@ -9,11 +8,15 @@ import { BiCrown } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
 import {
   IconButton,
+  Input,
+  InputGroup,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  Stack,
 } from "@chakra-ui/react";
+import logo from "../../assets/logo.svg";
 
 const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
   const navigate = useNavigate();
@@ -32,7 +35,7 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
 
   const goToTheHome = () => {
     navigate("/");
-  }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
@@ -43,17 +46,17 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <img
-          src="\images\zee5_logo1.jpeg"
-          alt="zee5 logo"
-          style={{
-            width: "100px",
-            height: "55px",
-            opacity: "revert-layer",
-          }}
+          src={logo}
+          title="ZEE5 Logo"
+          alt="ZEE5 Logo"
+          width="32px"
+          height="32px"
         />
       </div>
       <ul className={styles.nav_list}>
-        <li onClick={goToTheHome} className={styles.nav_item}>Home</li>
+        <li onClick={goToTheHome} className={styles.nav_item}>
+          Home
+        </li>
         <li className={styles.nav_item}>TV Shows</li>
         <li className={styles.nav_item}>Movies</li>
         <li className={styles.nav_item}>Premium</li>
@@ -62,21 +65,24 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
           <TbGridDots />
         </li>
       </ul>
-      <div className={styles.search_bar}>
-        <FiSearch color="white" />
-        <input
-          type="text"
-          placeholder="Search for Movies,Shows,Channels etc"
-          color="white"
-        />
-      </div>
-      <div className={styles.user_actions}>
+      <Stack display="flex" flexDirection="row" gap="55px" alignItems="center">
+        <Stack>
+          <InputGroup>
+            <Input
+              type="text"
+              height='30px'
+              placeholder="Search for Movies,Shows,Channels etc"
+              _placeholder={{  color: "black"}}
+              width="300px"
+              left="40px"
+            />
+          </InputGroup>
+        </Stack>
         <button className={styles.Lang_btn}>
           <HiOutlineLanguage />
         </button>
-
         <button className={styles.plan_btn}>
-          <BiCrown />
+          <BiCrown style={{fontSize: "20px"}} />
           Buy Plan
         </button>
 
@@ -101,14 +107,32 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
                 marginLeft="10px"
                 marginRight="10px"
               />
-              <MenuList border="none" bg="black" width="200px" zIndex="2" color="white">
-                <MenuItem bg="black" minH="48px" onClick={goToTheProfileSetting}>
+              <MenuList
+                border="none"
+                bg="black"
+                width="200px"
+                zIndex="2"
+                color="white"
+              >
+                <MenuItem
+                  bg="black"
+                  minH="48px"
+                  onClick={goToTheProfileSetting}
+                >
                   Profile Setting
                 </MenuItem>
-                <MenuItem bg="black" minH="48px" onClick={goToTheWatchlist}>Watchlist</MenuItem>
-                <MenuItem bg="black" minH="48px">Term and Condition</MenuItem>
-                <MenuItem bg="black" minH="48px">Subscription</MenuItem>
-                <MenuItem bg="black" minH="48px">Policy</MenuItem>
+                <MenuItem bg="black" minH="48px" onClick={goToTheWatchlist}>
+                  Watchlist
+                </MenuItem>
+                <MenuItem bg="black" minH="48px">
+                  Term and Condition
+                </MenuItem>
+                <MenuItem bg="black" minH="48px">
+                  Subscription
+                </MenuItem>
+                <MenuItem bg="black" minH="48px">
+                  Policy
+                </MenuItem>
               </MenuList>
             </Menu>
             <button className={styles.login_btn} onClick={handleLogout}>
@@ -122,11 +146,10 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
             </button>
           </Link>
         )}
-
         <button className={styles.last_btn}>
           <IoReorderThree />
         </button>
-      </div>
+      </Stack>
     </nav>
   );
 };
