@@ -5,14 +5,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Card from "@mui/material/Card";
 import axiosInstance from "../../services/axiosInstance";
 
-
 const PopularCard = () => {
   const [popularData, setPopularData] = useState([]);
 
   useEffect(() => {
     const fetchPopularData = async () => {
       try {
-        const response = await axiosInstance.get("/ott/show?page=${page}&limit=${limit}");
+        const response = await axiosInstance.get(
+          "/ott/show?page=${page}&limit=${limit}"
+        );
         if (response.status === 200) {
           setPopularData(response.data.data);
         } else {
@@ -30,13 +31,14 @@ const PopularCard = () => {
   return (
     <div className={styles.popular_section}>
       <h2>Popular Shows & Movies</h2>
-      <ul className={styles.popular_carousel}>
+      <ul>
         {/* Map through popularData and display list items */}
         <Carousel
+          className={styles.popular_carousel}
           interval={2000}
           infiniteLoop={true}
           showThumbs={false}
-          stopOnHover={true}
+          stopOnHover={false}
           autoPlay={true}
           showStatus={false}
           width={"100%"}
@@ -47,22 +49,20 @@ const PopularCard = () => {
         >
           {popularData.map((item) => (
             <Card
-              className={styles.popular_card}
               key={item._id}
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
-                margin: "10px",
+                gap: "10px",
+                margin: "5px",
                 backgroundColor: "transparent",
                 height: "100%",
                 width: "70%",
-                color: "whitesmoke",
                 fontSize: "10px",
               }}
             >
               <img src={item.thumbnail} alt={item.title} />
-              <li key={item._id}>{item.title}</li>
+              <p key={item._id}>{item.title}</p>
             </Card>
           ))}
         </Carousel>

@@ -1,11 +1,5 @@
-.trending_card {
-    display: flex;
-    flex-direction: row;
-    
-}
-
 .trending_section h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: inherit;
     font-size: 40px;
     font-weight: 600;
     color: white;
@@ -20,6 +14,7 @@
 
 .trending_section p{
     font-size: 15px;
+    font-family: inherit;
     color: white;
 }
 

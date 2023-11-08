@@ -1,10 +1,5 @@
-.popular_section ul{
-    display: flex;
-    flex-direction: row;
-}
-
 .popular_section h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: inherit;
     font-size: 40px;
     font-weight: 600;
     color: white;
@@ -17,15 +12,12 @@
     width: 600px;
 } 
 
-.popular_section li{
+.popular_section p{
     font-size: 15px;
+    font-family: inherit;
     color: white;
 }
 
 .popular_card:hover{
-    transform: scale(1.2);
-}
-
-.popular_carousel{
-    background: transparent;
+    transform: scale(1.1);
 }

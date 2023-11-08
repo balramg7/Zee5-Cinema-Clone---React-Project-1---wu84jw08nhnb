@@ -17,8 +17,8 @@ const TrendingNow = () => {
         console.error("An error occurred:", error);
       });
   }, []);
-  
-// console.log(trendingData);
+
+  // console.log(trendingData);
   return (
     <div className={styles.trending_section}>
       <h2>Trending New</h2>
@@ -26,7 +26,7 @@ const TrendingNow = () => {
       <ul>
         {/* Map through trendingData and display list items */}
         <Carousel
-        className={styles.trending_carousel}
+          className={styles.trending_carousel}
           interval={2000}
           infiniteLoop={true}
           showThumbs={false}
@@ -41,18 +41,17 @@ const TrendingNow = () => {
         >
           {trendingData.map((item) => (
             <Card
-            className={styles.trending_card}
               key={item._id}
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
-                margin: "10px",
+                gap: "10px",
+                margin: "5px",
                 backgroundColor: "transparent",
                 height: "100%",
                 width: "70%",
-                color: "whitesmoke",
                 fontSize: "10px",
+                
               }}
             >
               <img src={item.thumbnail} alt={item.title} />

@@ -65,16 +65,16 @@ const Navbar = ({ userAuthenticated, setUserAuthenticated }) => {
           <TbGridDots />
         </li>
       </ul>
-      <Stack display="flex" flexDirection="row" gap="55px" alignItems="center">
+      <Stack display="flex" flexDirection="row" gap="45px" alignItems="center" marginLeft="30px" position="relative">
         <Stack>
           <InputGroup>
             <Input
               type="text"
               height='30px'
               placeholder="Search for Movies,Shows,Channels etc"
-              _placeholder={{  color: "black"}}
+              // _placeholder={{  color: "black"}}
               width="300px"
-              left="40px"
+              left="100px"
             />
           </InputGroup>
         </Stack>

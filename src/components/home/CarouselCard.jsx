@@ -56,14 +56,13 @@ const CarouselCard = () => {
               <Card
                 key={item._id}
                 style={{
-                  display: "flex",
+                  display: "block",
+                  position: "relative",
                   flexDirection: "column",
-                  gap: "20px",
-                  margin: "10px",
-                  backgroundColor: "transparent",
+                  gap: "40px",
                   height: "580px",
-                  width: "550px",
-                  color: "whitesmoke",
+                  width: "100%",
+                  fontFamily: "inherit",
                   fontSize: "10px",
                 }}
               >

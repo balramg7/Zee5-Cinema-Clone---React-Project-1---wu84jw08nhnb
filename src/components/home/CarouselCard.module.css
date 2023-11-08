@@ -1,11 +1,10 @@
-.home_page{
-color: white;
-min-width: 1000px;
-}
+
 
 .hero_section img{
     height: 580px;
-    width: 550px;
+    width: 570px;
+    object-fit: cover;
+    object-position: 100% 0;
 }
 
 .hero_section p{
